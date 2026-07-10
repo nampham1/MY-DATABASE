@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "oeuvre_id": 4,
+    "evenement_id": 1,
+    "type_relation_id": 28,
+    "libelle": "Présenté à",
+    "relation_directe": "Présenté à",
+    "relation_inverse": "a présenté"
+  },
+  {
+    "id": 2,
+    "oeuvre_id": 7,
+    "evenement_id": 1,
+    "type_relation_id": 28,
+    "libelle": "Présenté à",
+    "relation_directe": "Présenté à",
+    "relation_inverse": "a présenté"
+  },
+  {
+    "id": 3,
+    "oeuvre_id": 1,
+    "evenement_id": 2,
+    "type_relation_id": 27,
+    "libelle": "Exposé à",
+    "relation_directe": "Exposé à",
+    "relation_inverse": "a exposé"
+  },
+  {
+    "id": 4,
+    "oeuvre_id": 5,
+    "evenement_id": 2,
+    "type_relation_id": 27,
+    "libelle": "Exposé à",
+    "relation_directe": "Exposé à",
+    "relation_inverse": "a exposé"
+  }
+]

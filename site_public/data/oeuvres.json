@@ -1,0 +1,254 @@
+[
+  {
+    "id": 10,
+    "cote": "OEV_0010",
+    "titre": "Vue depuis le train",
+    "annee": 2026,
+    "largeur": null,
+    "hauteur": null,
+    "duree": 95,
+    "description": "Vidéo tournée entre Lausanne et Renens lors d’un trajet quotidien.",
+    "localisation": "Archive numérique",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:07",
+    "type_oeuvre": "Image en mouvement",
+    "technique": {
+      "libelle": "Vidéo",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": null,
+    "image_principale": "OEV/OEV_0010/OEV_0010_001.jpg"
+  },
+  {
+    "id": 9,
+    "cote": "OEV_0009",
+    "titre": "Boucle de circulation",
+    "annee": 2026,
+    "largeur": null,
+    "hauteur": null,
+    "duree": 12,
+    "description": "Animation numérique en boucle inspirée du trafic urbain.",
+    "localisation": "Archive numérique",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:07",
+    "type_oeuvre": "Image en mouvement",
+    "technique": {
+      "libelle": "Image animée",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": null,
+    "image_principale": "OEV/OEV_0009/OEV_0009_001.jpg"
+  },
+  {
+    "id": 8,
+    "cote": "OEV_0008",
+    "titre": "Premier essai de gravure",
+    "annee": 2025,
+    "largeur": 15.0,
+    "hauteur": 20.0,
+    "duree": null,
+    "description": "Première expérimentation à la pointe sèche.",
+    "localisation": "Meuble à estampes",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:07",
+    "type_oeuvre": "Estampe",
+    "technique": {
+      "libelle": "Pointe sèche",
+      "uri_getty": "https://vocab.getty.edu/aat/300041349",
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Papier",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0008/OEV_0008_001.jpg"
+  },
+  {
+    "id": 7,
+    "cote": "OEV_0007",
+    "titre": "Affiche Micro Édition Market",
+    "annee": 2025,
+    "largeur": 29.7,
+    "hauteur": 42.0,
+    "duree": null,
+    "description": "Affiche imprimée en risographie à deux couleurs.",
+    "localisation": "Tiroir des imprimés",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:07",
+    "type_oeuvre": "Imprimé",
+    "technique": {
+      "libelle": "Risographie",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Papier",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0007/OEV_0007_001.jpg"
+  },
+  {
+    "id": 6,
+    "cote": "OEV_0006",
+    "titre": "Stand de micro-édition",
+    "annee": 2025,
+    "largeur": 21.0,
+    "hauteur": 29.7,
+    "duree": null,
+    "description": "Dessin rapide réalisé sur le vif pendant une manifestation.",
+    "localisation": "Carton à dessins",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:07",
+    "type_oeuvre": "Dessin",
+    "technique": {
+      "libelle": "Feutre",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Papier",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0006/OEV_0006_001.jpg"
+  },
+  {
+    "id": 5,
+    "cote": "OEV_0005",
+    "titre": "Visiteurs devant les stands",
+    "annee": 2025,
+    "largeur": 21.0,
+    "hauteur": 29.7,
+    "duree": null,
+    "description": "Croquis effectué lors d’un marché de micro-édition.",
+    "localisation": "Carton à dessins",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:06",
+    "type_oeuvre": "Dessin",
+    "technique": {
+      "libelle": "Graphite",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Papier",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0005/OEV_0005_001.jpg"
+  },
+  {
+    "id": 4,
+    "cote": "OEV_0004",
+    "titre": "Façade éclairée",
+    "annee": 2024,
+    "largeur": 20.0,
+    "hauteur": 30.0,
+    "duree": null,
+    "description": "Eau-forte réalisée à partir d’une photographie nocturne.",
+    "localisation": "Meuble à estampes",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:06",
+    "type_oeuvre": "Estampe",
+    "technique": {
+      "libelle": "Eau-forte",
+      "uri_getty": "https://vocab.getty.edu/aat/300041365",
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Papier",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0004/OEV_0004_001.jpg"
+  },
+  {
+    "id": 3,
+    "cote": "OEV_0003",
+    "titre": "Passage du dernier bus",
+    "annee": 2024,
+    "largeur": 50.0,
+    "hauteur": 70.0,
+    "duree": null,
+    "description": "Scène urbaine observée à la tombée de la nuit.",
+    "localisation": "Atelier",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:06",
+    "type_oeuvre": "Peinture",
+    "technique": {
+      "libelle": "Acrylique",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Toile",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0003/OEV_0003_001.jpg"
+  },
+  {
+    "id": 2,
+    "cote": "OEV_0002",
+    "titre": "Lampadaire de la gare",
+    "annee": 2023,
+    "largeur": 15.0,
+    "hauteur": 20.0,
+    "duree": null,
+    "description": "Dessin d’un lampadaire observé depuis la place de la gare.",
+    "localisation": "Carton à dessins",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:06",
+    "type_oeuvre": "Dessin",
+    "technique": {
+      "libelle": "Encre",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Papier",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0002/OEV_0002_001.jpg"
+  },
+  {
+    "id": 1,
+    "cote": "OEV_0001",
+    "titre": "Carrefour sous la pluie",
+    "annee": 2023,
+    "largeur": 40.0,
+    "hauteur": 60.0,
+    "duree": null,
+    "description": "Vue nocturne d’un carrefour après une averse.",
+    "localisation": "Atelier",
+    "url_externe": null,
+    "notes_creation": null,
+    "created_at": "2026-07-03 14:19:06",
+    "type_oeuvre": "Peinture",
+    "technique": {
+      "libelle": "Huile",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "support": {
+      "libelle": "Toile",
+      "uri_getty": null,
+      "uri_wikidata": null
+    },
+    "image_principale": "OEV/OEV_0001/OEV_0001_001.jpg"
+  }
+]

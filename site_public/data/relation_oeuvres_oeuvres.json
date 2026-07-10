@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "oeuvre_source_id": 2,
+    "oeuvre_cible_id": 1,
+    "type_relation_id": 24,
+    "libelle": "Basé sur",
+    "source_cote": "OEV_0002",
+    "source_titre": "Lampadaire de la gare",
+    "cible_cote": "OEV_0001",
+    "cible_titre": "Carrefour sous la pluie",
+    "relation_directe": "Basé sur",
+    "relation_inverse": "a servi de base à"
+  },
+  {
+    "id": 2,
+    "oeuvre_source_id": 4,
+    "oeuvre_cible_id": 1,
+    "type_relation_id": 25,
+    "libelle": "Contient un élément de",
+    "source_cote": "OEV_0004",
+    "source_titre": "Façade éclairée",
+    "cible_cote": "OEV_0001",
+    "cible_titre": "Carrefour sous la pluie",
+    "relation_directe": "Contient un élément de",
+    "relation_inverse": "est repris dans"
+  }
+]

@@ -1,0 +1,551 @@
+/* =====================================================================
+   STYLE.CSS — ATELIER PERSONNEL
+   Structure :
+   1. Variables & base
+   2. Header
+   3. Galerie œuvres (masonry)
+   4. Galerie secondaire (séries, événements, publications)
+   5. Carte (commune)
+   6. Fiche œuvre
+   7. Métadonnées
+   8. Thèmes (tags)
+   9. Filtres
+   10. Relations
+   11. Divers
+===================================================================== */
+
+
+/* =====================
+   1. BASE
+   → Styles appliqués à toute la page
+===================== */
+
+:root {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+    /* ↑ Police système par défaut — remplace par une Google Font si besoin
+       ex: 'Inter', sans-serif après import dans index.html */
+}
+
+body {
+    margin: 0;
+    background: #faf9f6;   /* ← couleur de fond de la page → modifie ici */
+    color: #2c2c2a;        /* ← couleur du texte principal → modifie ici */
+}
+
+
+/* =====================
+   2. HEADER
+   → Barre en haut : titre du site, navigation, barre de recherche
+   → Défini dans index.html → <header id="header">
+===================== */
+
+header {
+    padding: 2rem 1.5rem 1rem;   /* ← espace intérieur du header */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.6rem;   /* ← taille du titre principal "Atelier" */
+}
+
+header p {
+    margin: 0.2rem 0 0;
+    color: #777;
+}
+
+header p a {
+    color: #777;
+    text-decoration: underline;
+}
+
+
+/* =====================
+   3. GALERIE ŒUVRES (masonry)
+   → Vue principale de galerie.js → div#grille.galerie-oeuvres
+   → Colonnes CSS : hauteurs variables selon les images (effet masonry)
+   → Overlay titre/année apparaît au survol
+===================== */
+
+.galerie-oeuvres {
+    columns: 4;           /* ← nombre de colonnes sur grand écran */
+    column-gap: 1.5rem;   /* ← espace entre les colonnes */
+}
+
+@media (max-width: 1200px) {
+    .galerie-oeuvres { columns: 3; }
+}
+@media (max-width: 800px) {
+    .galerie-oeuvres { columns: 2; }
+}
+@media (max-width: 500px) {
+    .galerie-oeuvres { columns: 1; }
+}
+
+/* Sur mobile/tactile : overlay toujours visible (pas de hover) */
+@media (hover: none) {
+    .galerie-oeuvres .carte-meta {
+        position: static;
+        background: transparent;
+        opacity: 1;
+    }
+}
+
+/* Chaque carte dans la galerie masonry
+   → break-inside: avoid empêche une carte d'être coupée entre colonnes */
+.galerie-oeuvres .carte {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1.5rem;   /* ← espace vertical entre les cartes */
+    break-inside: avoid;
+}
+
+/* Image : height auto conserve les proportions → effet masonry */
+.galerie-oeuvres .carte img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Overlay au survol
+   → inset: 0 = couvre toute la carte
+   → Modifie background pour changer couleur/opacité de l'overlay
+   → Modifie justify-content pour positionner le texte (center, flex-end...) */
+.galerie-oeuvres .carte-meta {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(255,255,255,0.9);   /* ← fond blanc semi-transparent */
+    opacity: 0;
+    transition: opacity 0.2s ease;      /* ← vitesse d'apparition */
+}
+
+.galerie-oeuvres .carte:hover .carte-meta {
+    opacity: 1;
+}
+
+
+/* =====================
+   4. GALERIE SECONDAIRE
+   → Séries : serie.js → div.galerie
+   → Événements : evenement.js → div.galerie
+   → Publications : publication.js → div.galerie
+   → Grille fixe, vignettes homogènes
+===================== */
+
+.galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    /* ↑ 220px = largeur minimale d'une carte → réduis pour plus de colonnes */
+    gap: 1.2rem;
+    padding: 1.5rem;
+}
+
+.galerie .carte img {
+    width: 100%;
+    height: 200px;        /* ← hauteur fixe des vignettes → modifie selon le rendu */
+    object-fit: cover;    /* ← recadre sans déformer */
+    display: block;
+}
+
+
+/* =====================
+   5. CARTE (commune aux deux galeries)
+   → .carte est utilisée partout : galerie masonry, galerie secondaire,
+     relations, index séries/événements/publications
+===================== */
+
+.carte {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;       /* ← fond de la carte → modifie ici */
+    border: 1px solid #eee; /* ← bordure → supprime ou modifie */
+    border-radius: 10px;    /* ← arrondi des coins → 0 pour carré */
+    overflow: hidden;
+    transition: transform 0.15s;
+}
+
+.carte:hover {
+    transform: translateY(-2px);   /* ← remontée au survol → 0 pour désactiver */
+}
+
+/* Bande sous l'image : titre + année
+   → Dans galerie-oeuvres : position absolute (overlay)
+   → Dans galerie secondaire : position normale (sous l'image) */
+.carte-meta {
+    padding: 0.6rem 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.carte-titre {
+    font-weight: 500;
+}
+
+.carte-annee {
+    color: #999;   /* ← couleur de l'année sur la vignette */
+}
+
+
+/* =====================
+   6. FICHE ŒUVRE
+   → fiche.js → main.fiche
+   → Deux colonnes : images à gauche, métadonnées à droite
+   → Sur mobile (flex-wrap) : empile en une colonne
+===================== */
+
+.fiche {
+    display: flex;
+    gap: 2rem;
+    padding: 0 1.5rem 2rem;
+    flex-wrap: wrap;   /* ← passe en colonne unique sur petit écran */
+}
+
+/* Colonne gauche : images de l'œuvre */
+.images {
+    flex: 1 1 320px;   /* ← largeur minimale de la colonne images */
+}
+
+.images figure {
+    margin: 0 0 1rem;
+}
+
+.images img {
+    width: 100%;
+    border-radius: 8px;   /* ← arrondi des images → 0 pour carré */
+}
+
+.images figcaption {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.3rem;
+}
+
+/* Colonne droite : métadonnées */
+.meta {
+    flex: 1 1 280px;   /* ← largeur minimale de la colonne métadonnées */
+}
+
+.meta h1 {
+    margin: 0 0 0.2rem;
+    font-size: 1.4rem;   /* ← taille du titre de l'œuvre */
+}
+
+/* Liens cliquables dans les métadonnées (technique, support, type)
+   → Renvoient vers la galerie filtrée */
+.meta p a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;   /* ← soulignement discret */
+}
+
+.meta p a:hover {
+    border-color: #888;
+}
+
+/* Bloc notes de création (champ privé affiché dans la vue admin)
+   → fiche.js → section.notes-creation */
+.notes-creation {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f5f5f5;          /* ← fond du bloc notes */
+    border-left: 4px solid #999;  /* ← barre latérale → modifie couleur */
+}
+
+.notes-creation h2 {
+    margin-top: 0;
+    font-size: 1rem;
+}
+
+
+/* =====================
+   7. MÉTADONNÉES
+   → Styles pour les champs affichés dans .meta sur la fiche
+===================== */
+
+/* Numéro de cote de l'œuvre */
+.cote {
+    color: #999;
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+}
+
+/* Nom de la série → lien cliquable vers la page de la série */
+.serie {
+    font-style: italic;
+    color: #666;
+}
+
+/* Description longue de l'œuvre */
+.description {
+    line-height: 1.5;   /* ← interligne → augmente pour plus d'aération */
+}
+
+/* Localisation physique de l'œuvre */
+.localisation {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Badge type d'œuvre (Peinture, Dessin, Imprimé...)
+   → Cliquable → renvoie vers galerie filtrée par type */
+.type-oeuvre {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #888;
+    background: #f0eee9;   /* ← fond du badge → modifie pour colorer par type */
+    padding: 0.15rem 0.6rem;
+    border-radius: 10px;
+    margin: 0.3rem 0;
+}
+
+.type-oeuvre a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================
+   8. THÈMES (tags)
+   → fiche.js → div.themes → a.theme
+   → Chaque tag est cliquable → renvoie vers galerie filtrée
+===================== */
+
+.themes {
+    margin-top: 1rem;
+}
+
+.theme {
+    display: inline-block;
+    background: #eee;         /* ← fond du tag → modifie par catégorie si besoin */
+    border-radius: 12px;      /* ← arrondi → 4px pour carré, 12px pour pilule */
+    padding: 0.2rem 0.7rem;
+    margin: 0 0.3rem 0.3rem 0;
+    font-size: 0.8rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.theme:hover {
+    background: #e0ded8;   /* ← fond au survol */
+}
+
+
+/* =====================
+   9. FILTRES
+   → galerie.js → aside.filtres dans div.layout
+   → Barre latérale gauche, sticky, scrollable
+===================== */
+
+/* Conteneur layout : filtres à gauche + galerie à droite */
+.layout {
+    display: flex;
+    align-items: flex-start;
+}
+
+.layout .galerie-oeuvres {
+    flex: 1;
+    min-width: 0;   /* ← important : empêche la grille de déborder */
+    padding: 1.5rem;
+}
+
+/* Barre de filtres latérale */
+.filtres {
+    width: 220px;          /* ← largeur de la barre de filtres */
+    flex-shrink: 0;
+    padding: 0 1rem 2rem 1.5rem;
+    position: sticky;      /* ← reste visible en scrollant */
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;      /* ← scroll interne si les filtres débordent */
+}
+
+.filtres-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.filtres-header h2 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Bouton "Réinitialiser" */
+.filtres-header button {
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 0.75rem;
+    color: #888;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Groupe de filtres (fieldset) : technique, support, type, thème... */
+.filtre-groupe {
+    border: none;
+    border-top: 1px solid #eee;   /* ← séparateur entre groupes */
+    margin: 0 0 0.4rem;
+    padding: 0.6rem 0 0.2rem;
+}
+
+.filtre-groupe legend {
+    padding: 0 0 0.3rem;
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Chaque case à cocher */
+.filtre-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.15rem 0;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.filtre-item input {
+    cursor: pointer;
+}
+
+/* Filtre plage d'années : deux champs numériques */
+.filtre-annee {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.filtre-annee input {
+    width: 64px;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+
+.filtre-annee span {
+    color: #aaa;
+}
+
+/* Barre de recherche plein texte dans le header */
+#recherche {
+    margin-top: 0.8rem;
+    width: 100%;
+    max-width: 420px;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 0.9rem;
+    font-family: inherit;
+}
+
+#recherche:focus {
+    outline: none;
+    border-color: #aaa;
+}
+
+
+/* =====================
+   10. RELATIONS
+   → fiche.js, evenement.js, publication.js
+   → Section en bas de la fiche : œuvres liées, événements, publications
+===================== */
+
+.relations {
+    padding: 0 1.5rem 2.5rem;
+    max-width: 900px;
+}
+
+.relations h2 {
+    margin: 0 0 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #777;   /* ← couleur du titre de section "Œuvres liées" etc. */
+}
+
+/* Grille horizontale des cartes de relation */
+.relations-liste {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Carte de relation : plus petite que les cartes normales */
+.carte-relation {
+    width: 160px;   /* ← largeur des cartes dans les sections relations */
+}
+
+.carte-relation img {
+    height: 110px;   /* ← hauteur fixe des vignettes de relation */
+}
+
+/* Label du type de relation (ex: "Basé sur", "Exposé à", "Édité dans") */
+.carte-relation-type {
+    display: block;
+    margin-bottom: 0.1rem;
+    font-size: 0.7rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+
+/* =====================
+   11. DIVERS
+===================== */
+
+/* Lien de retour en haut de chaque vue secondaire
+   → "← Retour à la galerie", "← Retour aux séries" etc. */
+.retour {
+    display: inline-block;
+    margin: 1rem 1.5rem;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* Lien externe (Instagram, site éditeur...) sur la fiche */
+.lien-externe a {
+    color: #555;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.lien-externe a:hover {
+    border-color: #555;
+}
+
+/* Message affiché quand aucun résultat ne correspond aux filtres
+   ou qu'une entité est introuvable */
+.vide {
+    padding: 2rem;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Badge "Image provisoire" sous les images temporaires
+   → fiche.js, publication.js → span.img-provisoire
+   → Affiché quand img_temp = true dans la base */
+.img-provisoire {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-style: italic;
+    color: #aaa;        /* ← couleur discrète → modifie si tu veux plus visible */
+    margin-top: 0.2rem;
+}

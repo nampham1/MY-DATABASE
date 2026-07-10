@@ -1,0 +1,26 @@
+[
+  {
+    "id": 2,
+    "cote": "EVT_002",
+    "titre": "Exposition collective Pully",
+    "lieu": "Cinéma CityClub Pully",
+    "date_debut": "2026-05-30",
+    "date_fin": "2026-05-30",
+    "type_id": 30,
+    "description": "Exposition collective autour de Gustave Roud.",
+    "url_externe": null,
+    "type": "Exposition"
+  },
+  {
+    "id": 1,
+    "cote": "EVT_001",
+    "titre": "Micro Édition Market",
+    "lieu": "Lausanne",
+    "date_debut": "2025-11-15",
+    "date_fin": "2025-11-16",
+    "type_id": 29,
+    "description": "Marché de micro-édition avec stand personnel.",
+    "url_externe": null,
+    "type": "Marché"
+  }
+]

@@ -1,0 +1,261 @@
+[
+  {
+    "id": 24,
+    "type": "relation",
+    "libelle": "Basé sur",
+    "uri_getty": null,
+    "uri_wikidata": "https://www.wikidata.org/wiki/Property:P144"
+  },
+  {
+    "id": 25,
+    "type": "relation",
+    "libelle": "Contient un élément de",
+    "uri_getty": null,
+    "uri_wikidata": "https://www.wikidata.org/wiki/Property:P518"
+  },
+  {
+    "id": 27,
+    "type": "relation",
+    "libelle": "Exposé à",
+    "uri_getty": null,
+    "uri_wikidata": "https://www.wikidata.org/wiki/Property:P608"
+  },
+  {
+    "id": 28,
+    "type": "relation",
+    "libelle": "Présenté à",
+    "uri_getty": null,
+    "uri_wikidata": "https://www.wikidata.org/wiki/Property:P1344"
+  },
+  {
+    "id": 26,
+    "type": "relation",
+    "libelle": "Édité dans",
+    "uri_getty": null,
+    "uri_wikidata": "https://www.wikidata.org/wiki/Property:P1433"
+  },
+  {
+    "id": 23,
+    "type": "support",
+    "libelle": "Bois",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 22,
+    "type": "support",
+    "libelle": "Carton",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 20,
+    "type": "support",
+    "libelle": "Papier",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 21,
+    "type": "support",
+    "libelle": "Toile",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 2,
+    "type": "technique",
+    "libelle": "Acrylique",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 1,
+    "type": "technique",
+    "libelle": "Aquarelle",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 11,
+    "type": "technique",
+    "libelle": "Crayon de couleur",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 12,
+    "type": "technique",
+    "libelle": "Eau-forte",
+    "uri_getty": "https://vocab.getty.edu/aat/300041365",
+    "uri_wikidata": null
+  },
+  {
+    "id": 3,
+    "type": "technique",
+    "libelle": "Encre",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 6,
+    "type": "technique",
+    "libelle": "Feutre",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 7,
+    "type": "technique",
+    "libelle": "Fusain",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 4,
+    "type": "technique",
+    "libelle": "Gouache",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 8,
+    "type": "technique",
+    "libelle": "Graphite",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 13,
+    "type": "technique",
+    "libelle": "Gravure sur bois",
+    "uri_getty": "https://vocab.getty.edu/aat/300041402",
+    "uri_wikidata": null
+  },
+  {
+    "id": 5,
+    "type": "technique",
+    "libelle": "Huile",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 19,
+    "type": "technique",
+    "libelle": "Image animée",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 14,
+    "type": "technique",
+    "libelle": "Linogravure",
+    "uri_getty": "https://vocab.getty.edu/aat/300041393",
+    "uri_wikidata": null
+  },
+  {
+    "id": 17,
+    "type": "technique",
+    "libelle": "Numérique",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 9,
+    "type": "technique",
+    "libelle": "Pastel",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 15,
+    "type": "technique",
+    "libelle": "Pointe sèche",
+    "uri_getty": "https://vocab.getty.edu/aat/300041349",
+    "uri_wikidata": null
+  },
+  {
+    "id": 16,
+    "type": "technique",
+    "libelle": "Risographie",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 10,
+    "type": "technique",
+    "libelle": "Stylo à bille",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 18,
+    "type": "technique",
+    "libelle": "Vidéo",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 30,
+    "type": "type_evenement",
+    "libelle": "Exposition",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 29,
+    "type": "type_evenement",
+    "libelle": "Marché",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 34,
+    "type": "type_oeuvre",
+    "libelle": "Dessin",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 36,
+    "type": "type_oeuvre",
+    "libelle": "Estampe",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 37,
+    "type": "type_oeuvre",
+    "libelle": "Image en mouvement",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 35,
+    "type": "type_oeuvre",
+    "libelle": "Imprimé",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 33,
+    "type": "type_oeuvre",
+    "libelle": "Peinture",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 32,
+    "type": "type_publication",
+    "libelle": "Livre",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 31,
+    "type": "type_publication",
+    "libelle": "Revue",
+    "uri_getty": null,
+    "uri_wikidata": null
+  }
+]

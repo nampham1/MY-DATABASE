@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "cote": "SER_001",
+    "titre": "Lausanne nocturne",
+    "description": "Série de scènes urbaines nocturnes autour du quartier de la gare.",
+    "annee_debut": 2023,
+    "annee_fin": null
+  },
+  {
+    "id": 2,
+    "cote": "SER_002",
+    "titre": "Carnets du marché",
+    "description": "Dessins et notes réalisés lors de manifestations de micro-édition.",
+    "annee_debut": 2025,
+    "annee_fin": null
+  }
+]

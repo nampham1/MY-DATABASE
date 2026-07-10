@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "publication_id": 1,
+    "chemin": "PUB/PUB_001/PUB_001_001.jpg",
+    "ordre": 1,
+    "legende": "Couverture"
+  },
+  {
+    "id": 4,
+    "publication_id": 2,
+    "chemin": "PUB/PUB_002/PUB_002_001.jpg",
+    "ordre": 1,
+    "legende": "Couverture"
+  }
+]

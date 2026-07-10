@@ -1,0 +1,163 @@
+[
+  {
+    "id": 16,
+    "libelle": "Bleu",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 19,
+    "libelle": "Brun",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 14,
+    "libelle": "Jaune",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 11,
+    "libelle": "Noir et blanc",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 13,
+    "libelle": "Orange",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 18,
+    "libelle": "Rose",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 12,
+    "libelle": "Rouge",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 15,
+    "libelle": "Vert",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 17,
+    "libelle": "Violet",
+    "categorie": "couleur dominante",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 10,
+    "libelle": "Abstraction",
+    "categorie": "motif",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 7,
+    "libelle": "Animal",
+    "categorie": "motif",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 2,
+    "libelle": "Autoportrait",
+    "categorie": "motif",
+    "uri_getty": "https://vocab.getty.edu/aat/300124534",
+    "uri_wikidata": null
+  },
+  {
+    "id": 6,
+    "libelle": "Figure",
+    "categorie": "motif",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 9,
+    "libelle": "Intérieur",
+    "categorie": "motif",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 5,
+    "libelle": "Nature morte",
+    "categorie": "motif",
+    "uri_getty": "https://vocab.getty.edu/aat/300015638",
+    "uri_wikidata": null
+  },
+  {
+    "id": 3,
+    "libelle": "Paysage",
+    "categorie": "motif",
+    "uri_getty": "https://vocab.getty.edu/aat/300015636",
+    "uri_wikidata": null
+  },
+  {
+    "id": 4,
+    "libelle": "Paysage urbain",
+    "categorie": "motif",
+    "uri_getty": "https://vocab.getty.edu/aat/300015571",
+    "uri_wikidata": null
+  },
+  {
+    "id": 1,
+    "libelle": "Portrait",
+    "categorie": "motif",
+    "uri_getty": "https://vocab.getty.edu/aat/300015637",
+    "uri_wikidata": null
+  },
+  {
+    "id": 22,
+    "libelle": "D'après maître",
+    "categorie": "référence",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 20,
+    "libelle": "D'après nature",
+    "categorie": "référence",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 21,
+    "libelle": "D'après photo",
+    "categorie": "référence",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 23,
+    "libelle": "De mémoire",
+    "categorie": "référence",
+    "uri_getty": null,
+    "uri_wikidata": null
+  },
+  {
+    "id": 24,
+    "libelle": "Modèle vivant",
+    "categorie": "référence",
+    "uri_getty": null,
+    "uri_wikidata": null
+  }
+]

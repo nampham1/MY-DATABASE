@@ -1,0 +1,130 @@
+[
+  {
+    "oeuvre_id": 1,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 1,
+    "theme_id": 21
+  },
+  {
+    "oeuvre_id": 2,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 3,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 3,
+    "theme_id": 16
+  },
+  {
+    "oeuvre_id": 4,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 4,
+    "theme_id": 11
+  },
+  {
+    "oeuvre_id": 5,
+    "theme_id": 6
+  },
+  {
+    "oeuvre_id": 6,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 7,
+    "theme_id": 10
+  },
+  {
+    "oeuvre_id": 7,
+    "theme_id": 12
+  },
+  {
+    "oeuvre_id": 8,
+    "theme_id": 11
+  },
+  {
+    "oeuvre_id": 9,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 9,
+    "theme_id": 10
+  },
+  {
+    "oeuvre_id": 10,
+    "theme_id": 3
+  },
+  {
+    "oeuvre_id": 10,
+    "theme_id": 20
+  },
+  {
+    "oeuvre_id": 1,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 1,
+    "theme_id": 21
+  },
+  {
+    "oeuvre_id": 2,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 3,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 3,
+    "theme_id": 16
+  },
+  {
+    "oeuvre_id": 4,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 4,
+    "theme_id": 11
+  },
+  {
+    "oeuvre_id": 5,
+    "theme_id": 6
+  },
+  {
+    "oeuvre_id": 6,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 7,
+    "theme_id": 10
+  },
+  {
+    "oeuvre_id": 7,
+    "theme_id": 12
+  },
+  {
+    "oeuvre_id": 8,
+    "theme_id": 11
+  },
+  {
+    "oeuvre_id": 9,
+    "theme_id": 4
+  },
+  {
+    "oeuvre_id": 9,
+    "theme_id": 10
+  },
+  {
+    "oeuvre_id": 10,
+    "theme_id": 3
+  },
+  {
+    "oeuvre_id": 10,
+    "theme_id": 20
+  }
+]

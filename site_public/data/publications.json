@@ -1,0 +1,24 @@
+[
+  {
+    "id": 2,
+    "cote": "PUB_002",
+    "titre": "Micro-édition romande",
+    "edition": "Numéro 1",
+    "date": "2026-01-15",
+    "type_id": 31,
+    "description": "Revue collective consacrée à la micro-édition.",
+    "url_externe": null,
+    "type": "Revue"
+  },
+  {
+    "id": 1,
+    "cote": "PUB_001",
+    "titre": "Lausanne nocturne",
+    "edition": "Première édition",
+    "date": "2025-10-01",
+    "type_id": 32,
+    "description": "Catalogue consacré à la série Lausanne nocturne.",
+    "url_externe": null,
+    "type": "Livre"
+  }
+]

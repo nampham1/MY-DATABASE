@@ -1,0 +1,58 @@
+[
+  {
+    "oeuvre_id": 1,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 2,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 3,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 4,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 5,
+    "serie_id": 2
+  },
+  {
+    "oeuvre_id": 6,
+    "serie_id": 2
+  },
+  {
+    "oeuvre_id": 7,
+    "serie_id": 2
+  },
+  {
+    "oeuvre_id": 1,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 2,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 3,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 4,
+    "serie_id": 1
+  },
+  {
+    "oeuvre_id": 5,
+    "serie_id": 2
+  },
+  {
+    "oeuvre_id": 6,
+    "serie_id": 2
+  },
+  {
+    "oeuvre_id": 7,
+    "serie_id": 2
+  }
+]

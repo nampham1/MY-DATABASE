@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Atelier</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header id="header">
+    <h1><a href="index.html" id="lien-accueil">Atelier</a></h1>
+    <nav>
+      <a href="index.html?vue=series">Séries</a>
+      <a href="index.html?vue=evenements">Événements</a>
+      <a href="index.html?vue=publications">Publications</a>
+    </nav>
+    <input type="search" id="recherche" placeholder="Rechercher…" autocomplete="off">
+  </header>
+
+  <!-- Zone principale : le router injecte la bonne vue ici -->
+  <div id="app"></div>
+
+  <!-- Chargement des scripts dans le bon ordre -->
+  <script src="js/router.js"></script>
+  <script src="js/galerie.js"></script>
+  <script src="js/fiche.js"></script>
+  <script src="js/serie.js"></script>
+  <script src="js/evenement.js"></script>
+  <script src="js/publication.js"></script>
+
+</body>
+</html>

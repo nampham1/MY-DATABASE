@@ -1,0 +1,16 @@
+[
+  {
+    "id": 3,
+    "evenement_id": 1,
+    "chemin": "EVT/EVT_001/EVT_001_001.jpg",
+    "ordre": 1,
+    "legende": "Vue du stand"
+  },
+  {
+    "id": 4,
+    "evenement_id": 2,
+    "chemin": "EVT/EVT_002/EVT_002_001.jpg",
+    "ordre": 1,
+    "legende": "Vue de l'exposition"
+  }
+]

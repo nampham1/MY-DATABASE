@@ -56,6 +56,8 @@ function afficherGalerie(app) {
     </fieldset>
   `).join("");
 
+  
+
   // ─── HTML de la page ────────────────────────────────────────────────────────
   conteneur.innerHTML = `
     <div class="layout">
@@ -84,6 +86,27 @@ function afficherGalerie(app) {
     </div>
   `;
 
+// ─── Filtres repliables ─────────────────────────────────────────────────────
+
+// Tous fermés sauf le premier
+document.querySelectorAll(".filtre-groupe")
+  .forEach((groupe, i) => {
+    if (i > 0) {
+      groupe.classList.add("ferme");
+    }
+  });
+
+// Clic sur le titre
+document.querySelectorAll(".filtre-groupe legend")
+  .forEach(legend => {
+
+    legend.addEventListener("click", () => {
+      legend.parentElement.classList.toggle("ferme");
+    });
+
+  });
+
+appliquerFiltres();      
   // ─── Logique de filtrage ────────────────────────────────────────────────────
   function appliquerFiltres() {
     const cases = document.querySelectorAll('.filtres input[type="checkbox"]:checked');
@@ -193,3 +216,21 @@ function afficherGalerie(app) {
 
   appliquerFiltres();
 }
+
+// ─── Filtres repliables ─────────────────────────────────────────────────────
+
+// ─── Pré-filtrage depuis l'URL ─────────────────────────────────────────────
+const params = new URLSearchParams(window.location.search);
+
+params.forEach((valeur, attr) => {
+  if (attr === "vue") return;
+
+  const cible = document.querySelector(
+    `.filtres input[data-attr="${attr}"][data-val="${valeur}"]`
+  );
+
+  if (cible) cible.checked = true;
+});
+
+
+

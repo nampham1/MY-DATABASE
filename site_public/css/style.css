@@ -23,7 +23,20 @@
 :root {
     font-family: -apple-system, Helvetica, Arial, sans-serif;
     /* ↑ Police système par défaut — remplace par une Google Font si besoin
-       ex: 'Inter', sans-serif après import dans index.html */
+
+    /* Coin coupé */
+    --corner: polygon(
+        15px 0,
+        100% 0,
+        100% 100%,
+        0 100%,
+        0 15px
+    );
+    /* Ombre  */
+    --shadow-color: blue;
+    --shadow-bordure-gauche: 4px solid var(--shadow-color);
+    --shadow-bordure-bas: 4px solid var(--shadow-color);
+
 }
 
 body {
@@ -40,7 +53,13 @@ body {
 ===================== */
 
 header {
-    padding: 2rem 1.5rem 1rem;   /* ← espace intérieur du header */
+    padding: 2rem 1.5rem 2rem;   /* ← espace intérieur du header : haut, côtés, bas*/
+    max-width: 100%;
+    margin: auto;
+    position: sticky;
+    top:0;
+    z-index: 1000;
+    background: white;
 }
 
 header h1 {
@@ -50,17 +69,28 @@ header h1 {
 
 header p {
     margin: 0.2rem 0 0;
-    color: #777;
+    color: #6e4545;
 }
 
 header p a {
     color: #777;
     text-decoration: underline;
 }
-
-
+/* Barre de recherche */
+#recherche {
+    display: block;
+    width: 100%;
+    height: 50px; 
+    margin: 1rem auto 1rem;
+    padding: 0em 1.5rem;
+    border: 1px;
+    border-bottom: 1px solid
+    font-size: 1.3rem;
+    text-align: center;
+    background: purple;
+}
 /* =====================
-   3. GALERIE ŒUVRES (masonry)
+   3. GALERIE ŒUVRES
    → Vue principale de galerie.js → div#grille.galerie-oeuvres
    → Colonnes CSS : hauteurs variables selon les images (effet masonry)
    → Overlay titre/année apparaît au survol
@@ -96,9 +126,14 @@ header p a {
     position: relative;
     display: inline-block;
     width: 100%;
-    margin-bottom: 1.5rem;   /* ← espace vertical entre les cartes */
+    margin-bottom: 1.5rem; /* ← espace vertical entre les cartes */
     break-inside: avoid;
+    /* coin coupé et ombre */
+    clip-path: var(--corner);
+    border-left: var(--shadow-bordure-gauche);
+    border-bottom: var(--shadow-bordure-bas);
 }
+
 
 /* Image : height auto conserve les proportions → effet masonry */
 .galerie-oeuvres .carte img {
@@ -128,6 +163,109 @@ header p a {
     opacity: 1;
 }
 
+/* =====================
+   BARRE D'AFFICHAGE
+   → Ligne avec compteur + toggle Grille/Chronologie
+   → galerie.js → div.barre-affichage
+===================== */
+
+.barre-affichage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem 0.5rem;
+}
+
+/* Toggle Grille / Chronologie
+   → Masqué sur mobile (< 600px) : un seul mode sur smartphone */
+.toggle-affichage {
+    display: flex;
+    gap: 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    .toggle-affichage {
+        display: none;   /* ← toggle masqué sur mobile */
+    }
+}
+
+.toggle-btn {
+    padding: 0.35rem 0.9rem;
+    border: none;
+    background: #fff;
+    color: #888;
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.toggle-btn:first-child {
+    border-right: 1px solid #ddd;
+}
+
+/* Bouton actif */
+.toggle-btn.actif {
+    background: #f0eee9;   /* ← fond du bouton actif → modifie */
+    color: #2c2c2a;
+}
+
+/* =====================
+   CHRONOLOGIE
+   → galerie.js → div#grille.galerie-chronologie
+   → Groupes d'œuvres séparés par des bandeaux d'année
+===================== */
+
+/* Un groupe par année */
+.groupe-annee {
+    margin-bottom: 2.5rem;
+}
+
+/* Séparateur avec l'année
+   → Ligne horizontale avec le millésime centré */
+.separateur-annee {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.separateur-annee::before,
+.separateur-annee::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ddd;   /* ← couleur de la ligne → modifie */
+}
+
+.separateur-annee-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #999;              /* ← couleur de l'année → modifie */
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.layout #grille .galerie-oeuvres {
+    padding: 0;
+    width: 100%;
+}
+/* La grille masonry à l'intérieur de chaque groupe d'année
+   → réutilise .galerie-oeuvres existant */
+
+#grille.galerie-chronologie {
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+}
+
+#grille.galerie-chronologie .galerie-oeuvres {
+    padding: 0;
+    width: 100%;
+}
 
 /* =====================
    4. GALERIE SECONDAIRE
@@ -165,7 +303,7 @@ header p a {
     color: inherit;
     background: #fff;       /* ← fond de la carte → modifie ici */
     border: 1px solid #eee; /* ← bordure → supprime ou modifie */
-    border-radius: 10px;    /* ← arrondi des coins → 0 pour carré */
+    border-radius: 0px;    /* ← arrondi des coins → 0 pour carré */
     overflow: hidden;
     transition: transform 0.15s;
 }
@@ -225,6 +363,20 @@ header p a {
     font-size: 0.8rem;
     color: #888;
     margin-top: 0.3rem;
+}
+
+/* Vidéo vimeo */
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%;
+}
+
+.video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Colonne droite : métadonnées */
@@ -357,34 +509,23 @@ header p a {
     padding: 1.5rem;
 }
 
-/* Barre de filtres latérale */
+/* Barre de filtres latérale*/ 
 .filtres {
     width: 220px;          /* ← largeur de la barre de filtres */
     flex-shrink: 0;
     padding: 0 1rem 2rem 1.5rem;
     position: sticky;      /* ← reste visible en scrollant */
-    top: 0;
+    top: 180px;
     max-height: 100vh;
     overflow-y: auto;      /* ← scroll interne si les filtres débordent */
-}
-
-.filtres-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.filtres-header h2 {
-    margin: 0;
-    font-size: 1rem;
+    
 }
 
 /* Bouton "Réinitialiser" */
 .filtres-header button {
     border: none;
     background: none;
-    padding: 0;
+    padding-bottom: 15px;
     font-size: 0.75rem;
     color: #888;
     text-decoration: underline;
@@ -392,21 +533,49 @@ header p a {
 }
 
 /* Groupe de filtres (fieldset) : technique, support, type, thème... */
+
 .filtre-groupe {
-    border: none;
-    border-top: 1px solid #eee;   /* ← séparateur entre groupes */
+    border: 1px;
+    border-top: 2px solid black;   /* ← séparateur entre groupes */
     margin: 0 0 0.4rem;
     padding: 0.6rem 0 0.2rem;
+    overflow: hidden
 }
+
+.filtre-groupe.ferme > *:not(legend) {
+    display: none;
+}
+
 
 .filtre-groupe legend {
-    padding: 0 0 0.3rem;
-    font-size: 0.75rem;
-    color: #999;
+    display: inline-block;
+    
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    font-weight: 1000 ;
+
+    padding: 0.5rem 1rem;
+
+    background: yellow;
+    color: purple;
+
+    clip-path: var(--coin-coupe);
+    border-left: var(--shadow-bordure-gauche);
+    border-bottom: var(--shadow-bordure-bas);
+
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+}
+.filtre-groupe legend::after {
+    content: " ▾";
 }
 
+.filtre-groupe.ferme legend::after {
+    content: " ▸";
+}
 /* Chaque case à cocher */
 .filtre-item {
     display: flex;
@@ -415,6 +584,8 @@ header p a {
     padding: 0.15rem 0;
     font-size: 0.85rem;
     cursor: pointer;
+    font-family: inherit;
+    text-transform: uppercase;
 }
 
 .filtre-item input {
@@ -435,6 +606,7 @@ header p a {
     border-radius: 6px;
     font-size: 0.85rem;
     font-family: inherit;
+    text-transform: uppercase;
 }
 
 .filtre-annee span {
@@ -444,14 +616,24 @@ header p a {
 /* Barre de recherche plein texte dans le header */
 #recherche {
     margin-top: 0.8rem;
+
     width: 100%;
-    max-width: 420px;
+    max-width: 600px;
     padding: 0.5rem 0.8rem;
+
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 0;
+    
+    /* coin coupé et ombre */
+    clip-path: var(--corner);
+    border-left: var(--shadow-bordure-gauche);
+    border-bottom: var(--shadow-bordure-bas);
+
     box-sizing: border-box;
     font-size: 0.9rem;
     font-family: inherit;
+    background: yellow;
+    color: blue; 
 }
 
 #recherche:focus {

@@ -28,6 +28,26 @@ function afficherFiche(id, app) {
         ${legende}
       </figure>`;
   }).join("");
+// ─── VIDEOS ─────────────────────────────────────────────────────────────────
+let videoHTML = "";
+if (
+  oeuvre.url_externe &&
+  oeuvre.url_externe.includes("vimeo.com")
+) {
+  const match = oeuvre.url_externe.match(/vimeo\.com\/(\d+)/);
+  if (match) {
+    const videoId = match[1];
+    videoHTML = `
+      <div class="video-container">
+        <iframe
+          src="https://player.vimeo.com/video/${videoId}"
+          frameborder="0"
+          allow="">
+          </iframe>
+      </div>
+    `;
+  }
+}
 
   // ─── Technique / support  ───────────────────────────────────────────
   const morceaux = [];
@@ -184,7 +204,9 @@ const publicationsHTML = publicationsOeuvre.length ? `
   conteneur.innerHTML = `
     <a href="index.html" class="retour">← Retour à la galerie</a>
     <main class="fiche">
-      <div class="images">${imagesHTML}</div>
+      <div class="images">
+        ${videoHTML || imagesHTML}
+      </div>
       <div class="meta">
         <h1>${oeuvre.titre}</h1>
         <p class="cote">${oeuvre.cote || ""}</p>

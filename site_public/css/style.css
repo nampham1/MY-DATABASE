@@ -26,12 +26,13 @@
 
     /* Coin coupé */
     --corner: polygon(
-        15px 0,
-        100% 0,
-        100% 100%,
-        0 100%,
-        0 15px
-    );
+    15px 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    0 100%,
+    0 15px
+);
     /* Ombre  */
     --shadow-color: blue;
     --shadow-bordure-gauche: 4px solid var(--shadow-color);
@@ -62,9 +63,10 @@ header {
     background: white;
 }
 
+
+/* Titre du site */
 header h1 {
     margin: 0;
-    font-size: 1.6rem;   /* ← taille du titre principal "Atelier" */
 }
 
 header p {
@@ -76,6 +78,21 @@ header p a {
     color: #777;
     text-decoration: underline;
 }
+
+/* Lieu accueil nampham */
+#lien-accueil {
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: yellow;
+    -webkit-text-stroke: 1px orange;
+    text-shadow: -1.5px 2.5px 0 purple;   
+}
+
+#lien-accueil:hover {
+    color: purple;
+}
+
 /* Barre de recherche */
 #recherche {
     display: block;
@@ -83,12 +100,39 @@ header p a {
     height: 50px; 
     margin: 1rem auto 1rem;
     padding: 0em 1.5rem;
-    border: 1px;
-    border-bottom: 1px solid
+    border-bottom: 1px solid;
     font-size: 1.3rem;
     text-align: center;
     background: purple;
 }
+
+#menu {
+  display: flex;
+  gap: 30px;
+  justify-content: center
+
+}
+
+#menu a {
+  text-decoration: none;
+  color: black;
+  padding: 0.5rem 1.5rem;
+  background: yellow;
+  
+
+  /* coin coupé et ombre */
+  
+  border-left: var(--shadow-bordure-gauche);
+  border-bottom: var(--shadow-bordure-bas);
+  transition: all 0.3s ease;
+  border-radius: 999px; /* effet pilule */
+}
+#menu a:hover {
+  background-color: yellowgreen;
+  color: white;
+}
+
+
 /* =====================
    3. GALERIE ŒUVRES
    → Vue principale de galerie.js → div#grille.galerie-oeuvres
@@ -165,8 +209,6 @@ header p a {
 
 /* =====================
    BARRE D'AFFICHAGE
-   → Ligne avec compteur + toggle Grille/Chronologie
-   → galerie.js → div.barre-affichage
 ===================== */
 
 .barre-affichage {
@@ -176,20 +218,15 @@ header p a {
     padding: 0 1.5rem 0.5rem;
 }
 
-/* Toggle Grille / Chronologie
-   → Masqué sur mobile (< 600px) : un seul mode sur smartphone */
 .toggle-affichage {
     display: flex;
-    gap: 0;
     border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
 }
 
 @media (max-width: 600px) {
-    .toggle-affichage {
-        display: none;   /* ← toggle masqué sur mobile */
-    }
+    .toggle-affichage { display: none; }
 }
 
 .toggle-btn {
@@ -207,25 +244,25 @@ header p a {
     border-right: 1px solid #ddd;
 }
 
-/* Bouton actif */
 .toggle-btn.actif {
-    background: #f0eee9;   /* ← fond du bouton actif → modifie */
+    background: #f0eee9;
     color: #2c2c2a;
 }
 
 /* =====================
    CHRONOLOGIE
-   → galerie.js → div#grille.galerie-chronologie
-   → Groupes d'œuvres séparés par des bandeaux d'année
 ===================== */
 
-/* Un groupe par année */
+.galerie-chronologie {
+    padding: 0 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .groupe-annee {
     margin-bottom: 2.5rem;
 }
 
-/* Séparateur avec l'année
-   → Ligne horizontale avec le millésime centré */
 .separateur-annee {
     display: flex;
     align-items: center;
@@ -238,31 +275,20 @@ header p a {
     content: "";
     flex: 1;
     height: 1px;
-    background: #ddd;   /* ← couleur de la ligne → modifie */
+    background: #ddd;
 }
 
 .separateur-annee-label {
     font-size: 0.85rem;
     font-weight: 500;
-    color: #999;              /* ← couleur de l'année → modifie */
+    color: #999;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     white-space: nowrap;
 }
 
-.layout #grille .galerie-oeuvres {
-    padding: 0;
-    width: 100%;
-}
-/* La grille masonry à l'intérieur de chaque groupe d'année
-   → réutilise .galerie-oeuvres existant */
-
-#grille.galerie-chronologie {
-    padding: 0 1.5rem;
-    box-sizing: border-box;
-}
-
-#grille.galerie-chronologie .galerie-oeuvres {
+/* Réinitialise le padding hérité de .galerie-oeuvres dans chaque groupe */
+.groupe-annee .galerie-oeuvres {
     padding: 0;
     width: 100%;
 }
@@ -503,15 +529,24 @@ header p a {
     align-items: flex-start;
 }
 
-.layout .galerie-oeuvres {
+.layout > main {
     flex: 1;
-    min-width: 0;   /* ← important : empêche la grille de déborder */
+    min-width: 0;
+}
+
+/* Mode grille : la galerie masonry prend toute la largeur de <main> */
+.layout > main > .galerie-oeuvres {
     padding: 1.5rem;
+}
+
+/* Mode chronologie : le conteneur prend toute la largeur de <main> */
+.layout > main > .galerie-chronologie {
+    padding: 0 1.5rem;
 }
 
 /* Barre de filtres latérale*/ 
 .filtres {
-    width: 220px;          /* ← largeur de la barre de filtres */
+    width: 180px;          /* ← largeur de la barre de filtres */
     flex-shrink: 0;
     padding: 0 1rem 2rem 1.5rem;
     position: sticky;      /* ← reste visible en scrollant */
@@ -560,7 +595,7 @@ header p a {
     background: yellow;
     color: purple;
 
-    clip-path: var(--coin-coupe);
+    clip-path: var(--corner);
     border-left: var(--shadow-bordure-gauche);
     border-bottom: var(--shadow-bordure-bas);
 
@@ -586,6 +621,7 @@ header p a {
     cursor: pointer;
     font-family: inherit;
     text-transform: uppercase;
+
 }
 
 .filtre-item input {

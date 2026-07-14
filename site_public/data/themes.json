@@ -2,63 +2,63 @@
   {
     "id": 16,
     "libelle": "Bleu",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 19,
     "libelle": "Brun",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 14,
     "libelle": "Jaune",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 11,
-    "libelle": "Noir et blanc",
-    "categorie": "couleur dominante",
+    "libelle": "Noir",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 13,
     "libelle": "Orange",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 18,
     "libelle": "Rose",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 12,
     "libelle": "Rouge",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 15,
     "libelle": "Vert",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },
   {
     "id": 17,
     "libelle": "Violet",
-    "categorie": "couleur dominante",
+    "categorie": "couleur",
     "uri_getty": null,
     "uri_wikidata": null
   },

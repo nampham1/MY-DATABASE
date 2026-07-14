@@ -63,8 +63,8 @@ function afficherGalerie(app) {
     <div class="layout">
       <aside class="filtres">
         <div class="filtres-header">
-          <h2>Filtres</h2>
-          <button id="reset-filtres">Réinitialiser</button>
+          <h2>FILTRES</h2>
+          <button id="reset-filtres">réinitialiser</button>
         </div>
         ${blocFiltre("Type d'œuvre", types, "type_oeuvre")}
         <fieldset class="filtre-groupe">
@@ -80,12 +80,17 @@ function afficherGalerie(app) {
         ${filtreThemes}
       </aside>
       <main>
-        <p id="compteur" class="compteur"></p>
+        <div class="barre-affichage">
+          <p id="compteur" class="compteur"></p>
+          <div class="toggle-affichage" id="toggle-affichage">
+            <button id="btn-grille" class="toggle-btn actif">Grille</button>
+            <button id="btn-chronologie" class="toggle-btn">Chronologie</button>
+          </div>
+        </div>
         <div id="grille" class="galerie-oeuvres"></div>
       </main>
     </div>
   `;
-
 // ─── Filtres repliables ─────────────────────────────────────────────────────
 
 // Tous fermés sauf le premier

@@ -7,6 +7,9 @@
 function afficherGalerie(app) {
   const conteneur = document.getElementById("app");
 
+  // ─── Variable mode d'affichage ───────────────────────────────────────────────
+  let modeAffichage = "grille";
+
   // ─── Construction des filtres ───────────────────────────────────────────────
   const techniques = [...new Set(
     app.oeuvres.map(o => o.technique?.libelle).filter(Boolean)
@@ -91,6 +94,21 @@ function afficherGalerie(app) {
       </main>
     </div>
   `;
+
+// ─── Écouteurs toggle Grille / Chronologie ───────────────────────────────────
+document.getElementById("btn-grille").addEventListener("click", () => {
+    modeAffichage = "grille";
+    document.getElementById("btn-grille").classList.add("actif");
+    document.getElementById("btn-chronologie").classList.remove("actif");
+    appliquerFiltres();
+});
+
+document.getElementById("btn-chronologie").addEventListener("click", () => {
+    modeAffichage = "chronologie";
+    document.getElementById("btn-chronologie").classList.add("actif");
+    document.getElementById("btn-grille").classList.remove("actif");
+    appliquerFiltres();
+});
 // ─── Filtres repliables ─────────────────────────────────────────────────────
 
 // Tous fermés sauf le premier
@@ -167,29 +185,76 @@ appliquerFiltres();
     afficherCartes(resultat);
   }
 
-  function afficherCartes(liste) {
+  // ─── Rendu d'une carte individuelle ─────────────────────────────────────────
+  function carteHTML(o) {
+    const img = o.image_principale
+      ? `<img src="images/${o.image_principale}" alt="${o.titre}">`
+      : "";
+    return `
+      <a class="carte" href="index.html?vue=oeuvre&id=${o.id}">
+        ${img}
+        <div class="carte-meta">
+          <span class="carte-titre">${o.titre}</span>
+          <span class="carte-annee">${o.annee || ""}</span>
+        </div>
+      </a>`;
+  }
+
+  // ─── Mode grille (masonry aléatoire) ────────────────────────────────────────
+  function afficherGrille(liste) {
     const grille = document.getElementById("grille");
+    grille.className = "galerie-oeuvres";
+    const melange = [...liste].sort(() => Math.random() - 0.5);
+    grille.innerHTML = melange.map(carteHTML).join("");
+  }
+
+  // ─── Mode chronologie (groupé par année) ────────────────────────────────────
+  function afficherChronologie(liste) {
+    const grille = document.getElementById("grille");
+    grille.className = "galerie-chronologie";
+
+    const parAnnee = {};
+    liste.forEach(o => {
+      const annee = o.annee || "Sans date";
+      if (!parAnnee[annee]) parAnnee[annee] = [];
+      parAnnee[annee].push(o);
+    });
+
+    const anneesTriees = Object.keys(parAnnee).sort((a, b) => {
+      if (a === "Sans date") return 1;
+      if (b === "Sans date") return -1;
+      return b - a;
+    });
+
+    grille.innerHTML = anneesTriees.map(annee => `
+      <div class="groupe-annee">
+        <div class="separateur-annee">
+          <span class="separateur-annee-label">${annee}</span>
+        </div>
+        <div class="galerie-oeuvres">
+          ${parAnnee[annee].map(carteHTML).join("")}
+        </div>
+      </div>
+    `).join("");
+  }
+
+  // ─── Dispatcher selon le mode actif ─────────────────────────────────────────
+  function afficherCartes(liste) {
     const compteur = document.getElementById("compteur");
+    const grille = document.getElementById("grille");
     compteur.textContent = `${liste.length} œuvre${liste.length !== 1 ? "s" : ""}`;
 
     if (liste.length === 0) {
+      grille.className = "";
       grille.innerHTML = '<p class="vide">Aucune œuvre ne correspond.</p>';
       return;
     }
 
-    grille.innerHTML = liste.map(o => {
-      const img = o.image_principale
-        ? `<img src="images/${o.image_principale}" alt="${o.titre}">`
-        : "";
-      return `
-        <a class="carte" href="index.html?vue=oeuvre&id=${o.id}">
-          ${img}
-          <div class="carte-meta">
-            <span class="carte-titre">${o.titre}</span>
-            <span class="carte-annee">${o.annee || ""}</span>
-          </div>
-        </a>`;
-    }).join("");
+    if (modeAffichage === "chronologie") {
+      afficherChronologie(liste);
+    } else {
+      afficherGrille(liste);
+    }
   }
 
   // ─── Écouteurs ──────────────────────────────────────────────────────────────

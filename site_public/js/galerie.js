@@ -12,8 +12,8 @@ function afficherGalerie(app) {
 
   // ─── Construction des filtres ───────────────────────────────────────────────
   const techniques = [...new Set(
-    app.oeuvres.map(o => o.technique?.libelle).filter(Boolean)
-  )].sort();
+  app.oeuvre_techniques.map(r => r.libelle)
+)].sort();
 
   const supports = [...new Set(
     app.oeuvres.map(o => o.support?.libelle).filter(Boolean)
@@ -154,8 +154,15 @@ appliquerFiltres();
             .map(r => String(r.theme_id));
           if (!valeurs.some(v => themesOeuvre.includes(v))) return false;
         } else if (attr === "technique") {
-          if (!valeurs.includes(o.technique?.libelle)) return false;
-        } else if (attr === "support") {
+          const techniquesOeuvre = app.oeuvre_techniques
+            .filter(r => r.oeuvre_id === o.id)
+            .map(r => r.libelle);
+
+          if (!valeurs.some(v => techniquesOeuvre.includes(v))) {
+            return false;
+          }
+        }
+          else if (attr === "support") {
           if (!valeurs.includes(o.support?.libelle)) return false;
         } else if (attr === "type_oeuvre") {
           if (!valeurs.includes(o.type_oeuvre)) return false;
@@ -172,9 +179,14 @@ appliquerFiltres();
           .filter(r => r.oeuvre_id === o.id)
           .map(r => app.themes.find(t => t.id === r.theme_id)?.libelle || "")
           .join(" ");
+        const techniquesTexte = app.oeuvre_techniques
+          .filter(r => r.oeuvre_id === o.id)
+          .map(r => r.libelle)
+          .join(" ");
         const champ = [
           o.titre, o.cote, o.description,
-          themesTexte
+          themesTexte,
+          techniquesTexte
         ].filter(Boolean).join(" ").toLowerCase();
         if (!champ.includes(recherche)) return false;
       }
@@ -287,20 +299,6 @@ appliquerFiltres();
   appliquerFiltres();
 }
 
-// ─── Filtres repliables ─────────────────────────────────────────────────────
-
-// ─── Pré-filtrage depuis l'URL ─────────────────────────────────────────────
-const params = new URLSearchParams(window.location.search);
-
-params.forEach((valeur, attr) => {
-  if (attr === "vue") return;
-
-  const cible = document.querySelector(
-    `.filtres input[data-attr="${attr}"][data-val="${valeur}"]`
-  );
-
-  if (cible) cible.checked = true;
-});
 
 
 

@@ -337,11 +337,31 @@ def creer_json_oeuvre_themes(cur):
     ]
 
 # -------------------------
+# RELATION OEUVRE_TECHNIQUES
+# -------------------------
+def creer_json_oeuvre_techniques(cur):
+    cur.execute("""
+        SELECT
+            ot.oeuvre_id,
+            ot.technique_id,
+            t.libelle
+        FROM oeuvre_technique ot
+        JOIN terme t
+            ON t.id = ot.technique_id
+        ORDER BY ot.oeuvre_id
+    """)
+
+    return [
+        dict(row)
+        for row in cur.fetchall()
+    ]
+
+# -------------------------
 # MAIN
 # -------------------------
 # 📁 chemins
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, "..", "030_SQLite", "MyArtworks_V2.db")
+DB_PATH = os.path.join(BASE_DIR, "..", "030_SQLite", "MyArtworks_V3.db")
 OUTPUT_DIR = os.path.join(BASE_DIR, "site_public","data")
 
 OEUVRES_FILE = os.path.join(OUTPUT_DIR, "oeuvres.json")
@@ -357,6 +377,8 @@ OEUVRE_SERIES_FILE = os.path.join(OUTPUT_DIR, "relation_oeuvre_series.json")
 OEUVRE_EVENTS_FILE = os.path.join(OUTPUT_DIR, "relation_oeuvre_evenements.json")
 OEUVRE_PUBLICATIONS_FILE = os.path.join(OUTPUT_DIR, "relation_oeuvre_publications.json")
 OEUVRES_OEUVRES_FILE = os.path.join(OUTPUT_DIR, "relation_oeuvres_oeuvres.json")
+OEUVRE_TECHNIQUES_FILE = os.path.join(OUTPUT_DIR, "relation_oeuvre_techniques.json")
+
 
 IMAGES_EVENEMENTS_FILE = os.path.join(OUTPUT_DIR, "images_evenements.json")
 IMAGES_FILE = os.path.join(OUTPUT_DIR, "images.json")
@@ -383,12 +405,13 @@ def generer_json():
     termes = creer_json_termes(cur)
 
     oeuvre_themes = creer_json_oeuvre_themes(cur)
+    
     oeuvre_series = creer_json_oeuvre_series(cur)
 
     oeuvre_evenements = creer_json_oeuvre_evenements(cur)
     oeuvres_oeuvres = creer_json_oeuvres_oeuvres(cur)
     oeuvre_publications = creer_json_oeuvre_publications(cur)
-
+    oeuvre_techniques = creer_json_oeuvre_techniques(cur)
     images_evenements = creer_json_images_evenements(cur)
     ajouter_image_principale(oeuvres, images)
     images_publications = creer_json_images_publications(cur)
@@ -415,6 +438,9 @@ def generer_json():
 
     with open(THEMES_FILE, "w", encoding="utf-8") as f:
         json.dump(themes, f, ensure_ascii=False, indent=2)
+    
+    with open(OEUVRE_TECHNIQUES_FILE, "w", encoding="utf-8") as f:
+        json.dump(oeuvre_techniques, f, ensure_ascii=False, indent=2)
 
     with open(TERMES_FILE, "w", encoding="utf-8") as f:
         json.dump(termes, f, ensure_ascii=False, indent=2)
@@ -449,18 +475,20 @@ def generer_json():
     print(f"{len(series)} séries → {SERIES_FILE}")
     print(f"{len(evenements)} événements → {EVENEMENTS_FILE}")
     print(f"{len(publications)} publications → {PUBLICATIONS_FILE}")
-
     print(f"{len(themes)} thèmes → {THEMES_FILE}")
-    
-    print(f"{len(oeuvre_themes)} relations œuvre-themes")
-    print(f"{len(oeuvre_series)} relations œuvre-série")
-    print(f"{len(oeuvre_evenements)} relations œuvre-événement")
+
+    print( f"{len(oeuvre_techniques)} relations œuvre-technique → {OEUVRE_TECHNIQUES_FILE}")
+    print(f"{len(oeuvre_themes)} relations œuvre-themes → {OEUVRE_THEMES_FILE}")
+    print(f"{len(oeuvre_series)} relations œuvre-série → {OEUVRE_SERIES_FILE}")
+    print(f"{len(oeuvre_evenements)} relations œuvre-événement → {OEUVRE_EVENTS_FILE}")
     print(f"{len(oeuvres_oeuvres)} relations œuvre-œuvre → {OEUVRES_OEUVRES_FILE}")
-    print(f"{len(oeuvre_publications)} relations œuvre-publication")
+    print(f"{len(oeuvre_publications)} relations œuvre-publication → {OEUVRE_PUBLICATIONS_FILE}")
 
 
     print(f"{len(images_evenements)} images d'événements → {IMAGES_EVENEMENTS_FILE}")
     print(f"{len(images_publications)} images de publications → {IMAGES_PUBLICATIONS_FILE}")
+
+    print("∆ BASE UTILISEE =", DB_PATH)
 
 if __name__ == "__main__":
     generer_json()

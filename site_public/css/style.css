@@ -605,11 +605,11 @@ header p a {
     cursor: pointer;
 }
 .filtre-groupe legend::after {
-    content: " ▾";
+    content: " ↘";
 }
 
 .filtre-groupe.ferme legend::after {
-    content: " ▸";
+    content: " ↗";
 }
 /* Chaque case à cocher */
 .filtre-item {
@@ -628,6 +628,14 @@ header p a {
     cursor: pointer;
 }
 
+/* griser les items indisponibles */
+.filtre-item.indisponible {
+    opacity: 0.25;
+}
+
+.filtre-item.indisponible input {
+    pointer-events: none;
+}
 /* Filtre plage d'années : deux champs numériques */
 .filtre-annee {
     display: flex;

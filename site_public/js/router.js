@@ -26,6 +26,7 @@ const APP = {
   termes: [],
 
   oeuvre_themes: [],
+  oeuvre_techniques: [],
   oeuvre_series: [],
   oeuvre_evenements: [],
   oeuvre_publications: [],
@@ -51,6 +52,7 @@ async function chargerDonnees() {
     themes,
     termes,
     oeuvre_themes,
+    oeuvre_techniques,
     oeuvre_series,
     oeuvre_evenements,
     oeuvre_publications,
@@ -66,6 +68,7 @@ async function chargerDonnees() {
     fetch("data/themes.json").then(r => r.json()),
     fetch("data/termes.json").then(r => r.json()),
     fetch("data/relation_oeuvre_themes.json").then(r => r.json()),
+    fetch("data/relation_oeuvre_techniques.json").then(r => r.json()),
     fetch("data/relation_oeuvre_series.json").then(r => r.json()),
     fetch("data/relation_oeuvre_evenements.json").then(r => r.json()),
     fetch("data/relation_oeuvre_publications.json").then(r => r.json()),
@@ -80,6 +83,7 @@ async function chargerDonnees() {
   APP.evenements = evenements;
   APP.publications = publications;
   APP.themes = themes;
+  APP.oeuvre_techniques = oeuvre_techniques;
   APP.termes = termes;
   APP.oeuvre_themes = oeuvre_themes;
   APP.oeuvre_series = oeuvre_series;

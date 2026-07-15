@@ -1,0 +1,57 @@
+[
+  {
+    "oeuvre_id": 1,
+    "technique_id": 5,
+    "libelle": "Huile"
+  },
+  {
+    "oeuvre_id": 1,
+    "technique_id": 7,
+    "libelle": "Fusain"
+  },
+  {
+    "oeuvre_id": 2,
+    "technique_id": 3,
+    "libelle": "Encre"
+  },
+  {
+    "oeuvre_id": 3,
+    "technique_id": 2,
+    "libelle": "Acrylique"
+  },
+  {
+    "oeuvre_id": 4,
+    "technique_id": 12,
+    "libelle": "Eau-forte"
+  },
+  {
+    "oeuvre_id": 5,
+    "technique_id": 8,
+    "libelle": "Graphite"
+  },
+  {
+    "oeuvre_id": 6,
+    "technique_id": 6,
+    "libelle": "Feutre"
+  },
+  {
+    "oeuvre_id": 7,
+    "technique_id": 16,
+    "libelle": "Risographie"
+  },
+  {
+    "oeuvre_id": 8,
+    "technique_id": 15,
+    "libelle": "Pointe sèche"
+  },
+  {
+    "oeuvre_id": 9,
+    "technique_id": 19,
+    "libelle": "Image animée"
+  },
+  {
+    "oeuvre_id": 10,
+    "technique_id": 18,
+    "libelle": "Vidéo"
+  }
+]

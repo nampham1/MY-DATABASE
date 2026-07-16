@@ -103,9 +103,6 @@ async function router() {
   const vue = params.get("vue");
   const id = params.get("id") ? parseInt(params.get("id")) : null;
 
-  const recherche = document.getElementById("recherche");
-  recherche.style.display = vue ? "none" : "block";
-
   switch (vue) {
     case "oeuvre":
       afficherFiche(id, APP);
@@ -151,3 +148,31 @@ window.addEventListener("popstate", router);
 
 // ─── Point d'entrée ───────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", router);
+
+// ─── Recherche retour à l'index ─────────────────────────────────────────────────────
+function allerGalerieEtRechercher() {
+  if (window.location.search) {
+    history.pushState({}, "", "index.html");
+    router();
+  }
+  const recherche =
+    document.getElementById("recherche");
+  recherche.dispatchEvent(
+    new Event("input")
+  );
+}
+document
+  .getElementById("recherche")
+  .addEventListener("keydown", e => {
+
+    if (e.key === "Enter") {
+      allerGalerieEtRechercher();
+    }
+  });
+document
+  .getElementById("btn-recherche")
+  .addEventListener("click", () => {
+
+    allerGalerieEtRechercher();
+
+  });

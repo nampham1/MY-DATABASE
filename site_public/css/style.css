@@ -32,7 +32,7 @@
     calc(100% - 15px) 100%,
     0 100%,
     0 15px
-);
+    );
     /* Ombre  */
     --shadow-color: blue;
     --shadow-bordure-gauche: 4px solid var(--shadow-color);
@@ -54,19 +54,25 @@ body {
 ===================== */
 
 header {
-    padding: 2rem 1.5rem 2rem;   /* ← espace intérieur du header : haut, côtés, bas*/
+    padding: 1rem 1.5rem;   /* ← espace intérieur du header : haut, côtés, bas*/
     max-width: 100%;
-    margin: auto;
+  
     position: sticky;
     top:0;
     z-index: 1000;
     background: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
+
 
 
 /* Titre du site */
 header h1 {
     margin: 0;
+    white-space: nowrap;
 }
 
 header p {
@@ -96,14 +102,63 @@ header p a {
 /* Barre de recherche */
 #recherche {
     display: block;
+
     width: 100%;
-    height: 50px; 
-    margin: 1rem auto 1rem;
-    padding: 0em 1.5rem;
-    border-bottom: 1px solid;
-    font-size: 1.3rem;
-    text-align: center;
-    background: purple;
+    height: 50px;
+
+    margin: 0;
+    margin-top: 0.8rem;
+
+    padding: 0.5rem 8rem 0.5rem 1rem;
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    font-family: inherit;
+    text-align: left;
+
+    color: blue;
+    background: yellow;
+
+    border: 1px solid #ddd;
+    border-radius: 0;
+
+    border-radius: 999px; /* effet pilule */
+
+    border-left: var(--shadow-bordure-gauche);
+    border-bottom: var(--shadow-bordure-bas);
+}
+
+
+.recherche-wrapper {
+    position: relative;
+    min-width: 500px;
+    width: 100%;
+    flex: 1;
+}
+
+#btn-recherche {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    margin:0;
+    white-space: nowrap;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all .15s ease;
+}
+#btn-recherche:hover {
+    color: red;
+    transform: scale(1.2) translateY(-40%);
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    white-space: nowrap;
 }
 
 #menu {
@@ -119,9 +174,7 @@ header p a {
   padding: 0.5rem 1.5rem;
   background: yellow;
   
-
   /* coin coupé et ombre */
-  
   border-left: var(--shadow-bordure-gauche);
   border-bottom: var(--shadow-bordure-bas);
   transition: all 0.3s ease;
@@ -130,6 +183,26 @@ header p a {
 #menu a:hover {
   background-color: yellowgreen;
   color: white;
+  transform: translate(-3px, 3px);
+}
+
+/* disposition du header et de ses composants sur petit écran (mobile) */
+@media (max-width: 600px) {
+
+    header h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .recherche-wrapper {
+        width: 100%;
+    }
+
 }
 
 
@@ -589,7 +662,6 @@ header p a {
     letter-spacing: 0.08em;
     font-size: 0.8rem;
     font-weight: 1000 ;
-
     padding: 0.5rem 1rem;
 
     background: yellow;
@@ -603,9 +675,13 @@ header p a {
     font-weight: 500;
     margin-bottom: 0.75rem;
     cursor: pointer;
+    transition: all .15s ease;
 }
 .filtre-groupe legend::after {
     content: " ↘";
+}
+.filtre-groupe legend:hover {
+    transform: translate(-3px, 3px);
 }
 
 .filtre-groupe.ferme legend::after {
@@ -621,7 +697,6 @@ header p a {
     cursor: pointer;
     font-family: inherit;
     text-transform: uppercase;
-
 }
 
 .filtre-item input {
@@ -657,35 +732,16 @@ header p a {
     color: #aaa;
 }
 
-/* Barre de recherche plein texte dans le header */
-#recherche {
-    margin-top: 0.8rem;
 
-    width: 100%;
-    max-width: 600px;
-    padding: 0.5rem 0.8rem;
-
-    border: 1px solid #ddd;
-    border-radius: 0;
-    
-    /* coin coupé et ombre */
-    clip-path: var(--corner);
-    border-left: var(--shadow-bordure-gauche);
-    border-bottom: var(--shadow-bordure-bas);
-
-    box-sizing: border-box;
-    font-size: 0.9rem;
-    font-family: inherit;
-    background: yellow;
-    color: blue; 
+/* COMPTEUR */
+.filtre-label {
+    flex: 1;
 }
 
-#recherche:focus {
-    outline: none;
-    border-color: #aaa;
+.filtre-compteur {
+    color: #999;
+    font-size: 0.8rem;
 }
-
-
 /* =====================
    10. RELATIONS
    → fiche.js, evenement.js, publication.js

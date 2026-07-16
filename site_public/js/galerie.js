@@ -42,22 +42,40 @@ function afficherGalerie(app) {
         <legend>${titre}</legend>
         ${items.map(v => `
           <label class="filtre-item">
-            <input type="checkbox" data-attr="${attr}" data-val="${v}"> ${v}
-          </label>
+          <input type="checkbox" data-attr="${attr}" data-val="${v}">
+          <span class="filtre-label">
+            ${v}
+          </span>
+          <span class="filtre-compteur">
+            0
+          </span>
+        </label>
         `).join("")}
       </fieldset>`;
   }
 
   const filtreThemes = Object.entries(themesParCategorie).map(([cat, items]) => `
-    <fieldset class="filtre-groupe">
-      <legend>${cat}</legend>
-      ${items.map(t => `
-        <label class="filtre-item">
-          <input type="checkbox" data-attr="theme" data-val="${t.id}"> ${t.libelle}
-        </label>
-      `).join("")}
-    </fieldset>
-  `).join("");
+  <fieldset class="filtre-groupe">
+    <legend>${cat}</legend>
+    ${items.map(t => `
+      <label class="filtre-item">
+        <input
+          type="checkbox"
+          data-attr="theme"
+          data-val="${t.id}"
+        >
+
+        <span class="filtre-label">
+          ${t.libelle}
+        </span>
+
+        <span class="filtre-compteur">
+          0
+        </span>
+      </label>
+    `).join("")}
+  </fieldset>
+`).join("");
 
   
 
@@ -193,10 +211,64 @@ appliquerFiltres();
 
       return true;
     });
+    
 
     afficherCartes(resultat);
-  }
 
+    /* Compteurs des items de filtre */
+    const compteursTechniques = {};
+    const compteursSupports = {};
+    const compteursTypes = {};
+    const compteursThemes = {};
+
+    
+    resultat.forEach(o => {
+
+      if (o.type_oeuvre) {
+        compteursTypes[o.type_oeuvre] =
+          (compteursTypes[o.type_oeuvre] || 0) + 1;
+      }
+
+      if (o.support?.libelle) {
+        compteursSupports[o.support.libelle] =
+          (compteursSupports[o.support.libelle] || 0) + 1;
+      }
+
+      app.oeuvre_techniques
+        .filter(r => r.oeuvre_id === o.id)
+        .forEach(r => {
+          compteursTechniques[r.libelle] =
+            (compteursTechniques[r.libelle] || 0) + 1;
+        });
+
+      app.oeuvre_themes
+        .filter(r => r.oeuvre_id === o.id)
+        .forEach(r => {
+          compteursThemes[String(r.theme_id)] =
+            (compteursThemes[String(r.theme_id)] || 0) + 1;
+        });
+
+    });
+    /* COMPTEURS DES TECHNIQUES */
+    function mettreAJourCompteurs(attr, compteurs) {
+      document
+        .querySelectorAll(`input[data-attr="${attr}"]`)
+        .forEach(input => {
+
+          const nb =
+            compteurs[input.dataset.val] || 0;
+
+          input.parentElement
+            .querySelector(".filtre-compteur")
+            .textContent = `(${nb})`;
+        });
+    }
+    mettreAJourCompteurs("technique", compteursTechniques);
+    mettreAJourCompteurs("support", compteursSupports);
+    mettreAJourCompteurs("type_oeuvre", compteursTypes);
+    mettreAJourCompteurs("theme", compteursThemes);
+  }
+  
   // ─── Rendu d'une carte individuelle ─────────────────────────────────────────
   function carteHTML(o) {
     const img = o.image_principale
